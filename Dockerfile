@@ -1,14 +1,13 @@
-# Usa la imagen oficial de Nginx (ligera y rápida)
+# Etapa 1: Build
+FROM node:18 AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Etapa 2: Servir con Nginx
 FROM nginx:alpine
-
-# Borra la configuración/archivos por defecto
-RUN rm -rf /usr/share/nginx/html/*
-
-# Copia tu landing (index.html, css, js, etc.) a la carpeta pública
-COPY . /usr/share/nginx/html
-
-# Expone el puerto 80 (HTTP)
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
-
-# Comando para arrancar Nginx en primer plano
 CMD ["nginx", "-g", "daemon off;"]
