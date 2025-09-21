@@ -11,12 +11,32 @@ const Contact = () => {
     descripcion: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Aquí iría la lógica para enviar el formulario
-    alert('¡Gracias por tu interés! Te contactaremos pronto.');
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+   e.preventDefault();
+
+  try {
+    // Envía los datos al webhook de n8n
+    const response = await fetch('https://fiba-solutions-n8n.0kswtx.easypanel.host/webhook/f33a3f51-02b3-4026-83de-20ade39eb797', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData), // formData es tu estado con los campos del formulario
+    });
+
+    if (response.ok) {
+      alert('¡Gracias por tu interés! Te contactaremos pronto.');
+      window.location.reload(); // Recarga la página para limpiar el formulario
+    } else {
+      alert('Hubo un problema al enviar el formulario. Inténtalo de nuevo.');
+      window.location.reload(); // Recarga la página para limpiar el formulario
+    }
+  } catch (error) {
+    console.error('Error al enviar formulario:', error);
+    alert('Error al enviar el formulario.');
+  }
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -74,7 +94,7 @@ const Contact = () => {
                 href="mailto:info@blunexai.com" 
                 className="text-white text-lg hover:text-blue-200 transition-colors"
               >
-                info@blunexai.com
+                Fibasolutionsia@gmail.com
               </a>
             </div>
           </div>

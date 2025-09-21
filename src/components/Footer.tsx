@@ -1,4 +1,3 @@
-import React from 'react';
 import { Bot, Mail } from 'lucide-react';
 
 const Footer = () => {
@@ -16,7 +15,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <Bot className="w-8 h-8 text-blue-400" />
-              <span className="text-2xl font-bold">BlunexAI</span>
+              <span className="text-2xl font-bold">FibaSolutions</span>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
               Transformamos negocios a través de soluciones innovadoras de inteligencia 
@@ -25,10 +24,10 @@ const Footer = () => {
             <div className="flex items-center space-x-2">
               <Mail className="w-5 h-5 text-blue-400" />
               <a 
-                href="mailto:info@blunexai.com" 
+                href="mailto:fibasolutionsia@gmail.com" 
                 className="text-blue-400 hover:text-blue-300 transition-colors"
               >
-                info@blunexai.com
+                fibasolutionsia@gmail.com
               </a>
             </div>
           </div>
@@ -85,7 +84,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400">
-              © 2025 BlunexAI. Todos los derechos reservados.
+              © 2025 FibaSolutions. Todos los derechos reservados.
             </p>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
